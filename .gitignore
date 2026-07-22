@@ -4,4 +4,4 @@
 # Keep source resume files out of the public repo.
 # The published resume is assets/resume.pdf — these originals stay local only.
 assets/*.docx
-assets/Hemalatha_Yalamanchi_AIML_Resume 3.pdf
+assets/Hemalatha_Yalamanchi_AIML_Resume*.pdf

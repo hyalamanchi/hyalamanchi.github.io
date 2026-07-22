@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- EDIT: page title shown in the browser tab -->
+  <title>Hemalatha Yalamanchi — AI/ML Engineer & Data Scientist</title>
+  <meta name="description" content="Portfolio of Hemalatha Yalamanchi — AI/ML Engineer and Data Scientist specializing in NLP, LLMs, document AI, and cloud-native ML pipelines." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <!-- Apply saved theme before paint to avoid a flash of the wrong theme -->
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem('theme');
+        if (saved === 'light' || saved === 'dark') {
+          document.documentElement.setAttribute('data-theme', saved);
+        }
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+  <!-- ============ HEADER / NAV ============ -->
+  <header class="site-header" id="top">
+    <nav class="nav container">
+      <a href="#top" class="nav__logo">HY<span>.</span></a>
+
+      <div class="nav__actions">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark theme" title="Toggle theme">
+          <span class="theme-toggle__icon" aria-hidden="true">🌙</span>
+        </button>
+        <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+
+      <ul class="nav__menu" id="nav-menu">
+        <li><a href="#about" class="nav__link">About</a></li>
+        <li><a href="#experience" class="nav__link">Experience</a></li>
+        <li><a href="#projects" class="nav__link">Projects</a></li>
+        <li><a href="#achievements" class="nav__link">Achievements</a></li>
+        <li><a href="#resume" class="nav__link">Resume</a></li>
+        <li><a href="#contact" class="nav__link nav__link--cta">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ============ HERO ============ -->
+    <section class="hero container">
+      <div class="hero__content reveal">
+        <p class="hero__eyebrow">Hi, I'm</p>
+        <!-- EDIT: your name -->
+        <h1 class="hero__name">Hemalatha Yalamanchi</h1>
+        <!-- EDIT: roles rotate via the typing effect in js/main.js (ROLES array) -->
+        <h2 class="hero__role" aria-label="AI/ML Engineer and Data Scientist">
+          <span id="role-typed">AI/ML Engineer</span><span class="type-cursor" aria-hidden="true"></span>
+        </h2>
+        <!-- EDIT: short tagline about you -->
+        <p class="hero__tagline">
+          I design and deploy production-grade AI systems — turning unstructured data into
+          intelligent, automated workflows with NLP, LLMs, and cloud-native ML pipelines.
+        </p>
+        <div class="hero__cta">
+          <a href="#projects" class="btn btn--primary">View Projects</a>
+          <a href="assets/resume.pdf" class="btn btn--ghost" download>Download Resume</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ABOUT ============ -->
+    <section class="section container" id="about">
+      <h2 class="section__title reveal">About Me</h2>
+      <div class="about reveal">
+        <div class="about__media">
+          <!-- EDIT: replace with your headshot, e.g. src="assets/profile.jpg" -->
+          <img src="assets/profile.svg" alt="Portrait of Hemalatha Yalamanchi" class="about__photo" />
+        </div>
+        <div class="about__text">
+          <!-- EDIT: your bio -->
+          <p>
+            I'm an AI/ML Engineer and Data Scientist with 3+ years of experience designing and
+            deploying production-grade AI systems for intelligent document processing, automation,
+            and data-driven workflows. My work spans OCR, NLP, Large Language Models (LLMs), Vision
+            Language Models (VLMs), and cloud-native architectures across Azure and GCP.
+          </p>
+          <p>
+            I love building secure, scalable pipelines that integrate AI services, REST APIs, and
+            modern data platforms to drive measurable efficiency gains and cost savings — backed by
+            a strong foundation in MLOps, CI/CD automation, and cross-functional collaboration. I
+            hold an M.S. in Data Science from Saint Louis University.
+          </p>
+
+          <h3 class="about__subtitle">Skills &amp; Tools</h3>
+          <!-- EDIT: add/remove skills. Each group is one row. -->
+          <div class="skill-group">
+            <span class="skill-group__label">Languages</span>
+            <ul class="tag-list">
+              <li class="tag">Python</li>
+              <li class="tag">SQL</li>
+              <li class="tag">Bash</li>
+              <li class="tag">Java</li>
+            </ul>
+          </div>
+          <div class="skill-group">
+            <span class="skill-group__label">AI / ML</span>
+            <ul class="tag-list">
+              <li class="tag">TensorFlow</li>
+              <li class="tag">PyTorch</li>
+              <li class="tag">scikit-learn</li>
+              <li class="tag">XGBoost</li>
+              <li class="tag">Hugging Face</li>
+            </ul>
+          </div>
+          <div class="skill-group">
+            <span class="skill-group__label">NLP &amp; GenAI</span>
+            <ul class="tag-list">
+              <li class="tag">spaCy</li>
+              <li class="tag">NLTK</li>
+              <li class="tag">Tesseract OCR</li>
+              <li class="tag">LLMs / RAG</li>
+              <li class="tag">Prompt Engineering</li>
+              <li class="tag">Embeddings</li>
+            </ul>
+          </div>
+          <div class="skill-group">
+            <span class="skill-group__label">Cloud &amp; MLOps</span>
+            <ul class="tag-list">
+              <li class="tag">Azure</li>
+              <li class="tag">GCP</li>
+              <li class="tag">Docker</li>
+              <li class="tag">CI/CD</li>
+              <li class="tag">Git/GitHub</li>
+              <li class="tag">Linux (RHEL)</li>
+            </ul>
+          </div>
+          <div class="skill-group">
+            <span class="skill-group__label">Data &amp; BI</span>
+            <ul class="tag-list">
+              <li class="tag">PostgreSQL</li>
+              <li class="tag">MongoDB</li>
+              <li class="tag">MySQL</li>
+              <li class="tag">Snowflake</li>
+              <li class="tag">Power BI</li>
+              <li class="tag">Tableau</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ EXPERIENCE ============ -->
+    <section class="section section--alt" id="experience">
+      <div class="container">
+        <h2 class="section__title reveal">Experience</h2>
+        <p class="section__lead reveal">Where I've applied AI/ML and data science in production.</p>
+
+        <ol class="timeline">
+          <!-- ==== EXPERIENCE ITEM (copy this <li> for each role) ==== -->
+          <li class="timeline__item reveal">
+            <span class="timeline__date">Oct 2025 – Present</span>
+            <div class="timeline__content">
+              <h3 class="timeline__title">AI/ML Engineer — Tax Relief Advocates</h3>
+              <p class="timeline__meta">Irvine, CA</p>
+              <ul class="bullets">
+                <li>Designed and deployed end-to-end AI automation workflows for unstructured document processing, contributing to an estimated <strong>$7M+ in projected annual cost savings</strong>.</li>
+                <li>Built OCR + NLP + Vision Language Model (VLM) pipelines extracting structured fields from scanned documents with <strong>&gt;95% accuracy</strong> across diverse layouts.</li>
+                <li>Developed LLM-powered document classification and parsing systems, reducing manual review effort by <strong>40%+</strong>.</li>
+                <li>Engineered secure REST APIs and enterprise-grade security using Azure Key Vault, Managed Identities, and IP-restricted access controls.</li>
+              </ul>
+            </div>
+          </li>
+          <!-- ==== /EXPERIENCE ITEM ==== -->
+
+          <li class="timeline__item reveal">
+            <span class="timeline__date">Jun 2025 – Oct 2025</span>
+            <div class="timeline__content">
+              <h3 class="timeline__title">Data Scientist — Srivina Tech</h3>
+              <p class="timeline__meta">Remote</p>
+              <ul class="bullets">
+                <li>Built OCR + NLP pipelines with Python and TensorFlow to extract structured data from scanned PDFs, improving accuracy by <strong>30%</strong>.</li>
+                <li>Developed AI workflows integrating Azure AI Cognitive Services and OpenAI APIs for classification, parsing, and knowledge extraction.</li>
+                <li>Automated CI/CD pipelines with Azure DevOps, reducing deployment cycle time by <strong>25%</strong>.</li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="timeline__item reveal">
+            <span class="timeline__date">Jun 2024 – Jun 2025</span>
+            <div class="timeline__content">
+              <h3 class="timeline__title">Data Scientist — REWBIX Inc</h3>
+              <p class="timeline__meta">Remote</p>
+              <ul class="bullets">
+                <li>Implemented document-parsing ML models (scikit-learn, TensorFlow) for structured extraction from financial and business reports.</li>
+                <li>Built automated testing/validation frameworks achieving <strong>98% test coverage</strong> for compliance-ready AI workflows.</li>
+                <li>Developed Tableau dashboards and automated KPI reporting, improving stakeholder decision speed by <strong>18%</strong>.</li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="timeline__item reveal">
+            <span class="timeline__date">Aug 2024 – Dec 2024</span>
+            <div class="timeline__content">
+              <h3 class="timeline__title">Teaching Assistant, Predictive Modeling — Saint Louis University</h3>
+              <p class="timeline__meta">St. Louis, MO</p>
+              <ul class="bullets">
+                <li>Mentored graduate students in Python NLP, predictive modeling, and ML workflows using scikit-learn and Jupyter.</li>
+                <li>Automated grading via Linux-based Python scripts, cutting turnaround time by <strong>25%</strong>.</li>
+              </ul>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ PROJECTS ============ -->
+    <section class="section container" id="projects">
+      <div>
+        <h2 class="section__title reveal">Projects</h2>
+        <p class="section__lead reveal">A selection of things I've built.</p>
+
+        <div class="grid grid--cards" id="featured-grid">
+          <!-- ==== PROJECT CARD (copy this whole <article> block for each project) ==== -->
+          <article class="card reveal">
+            <div class="card__media">
+              <!-- EDIT: project screenshot -->
+              <img src="assets/projects/placeholder.svg" alt="Intelligent Document Parser project" loading="lazy" />
+            </div>
+            <div class="card__body">
+              <h3 class="card__title">Intelligent Document Parser</h3>
+              <p class="card__desc">
+                Capstone project (SLU) — an OCR + NLP pipeline using Tesseract OCR and spaCy to
+                parse structured fields from standardized forms with 92% field-extraction accuracy,
+                storing results in a normalized MySQL schema for downstream automation.
+              </p>
+              <ul class="tag-list tag-list--sm">
+                <li class="tag">Tesseract OCR</li>
+                <li class="tag">spaCy</li>
+                <li class="tag">Python</li>
+                <li class="tag">MySQL</li>
+              </ul>
+            </div>
+          </article>
+          <!-- ==== /PROJECT CARD ==== -->
+
+          <article class="card reveal">
+            <div class="card__media">
+              <img src="assets/projects/placeholder.svg" alt="Network Latency Predictor project" loading="lazy" />
+            </div>
+            <div class="card__body">
+              <h3 class="card__title">Network Latency Predictor</h3>
+              <p class="card__desc">
+                A machine-learning model in scikit-learn that predicts network latency with 90%
+                accuracy to support proactive performance optimization — with an automated KPI
+                reporting pipeline deployed on Linux and a Power BI dashboard.
+              </p>
+              <ul class="tag-list tag-list--sm">
+                <li class="tag">scikit-learn</li>
+                <li class="tag">Python</li>
+                <li class="tag">Power BI</li>
+                <li class="tag">Linux</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="card reveal">
+            <div class="card__media">
+              <img src="assets/projects/placeholder.svg" alt="LLM Document Classification and Parsing project" loading="lazy" />
+            </div>
+            <div class="card__body">
+              <h3 class="card__title">LLM Document Classification &amp; Parsing</h3>
+              <p class="card__desc">
+                An LLM-powered system that classifies and parses unstructured documents in a
+                production pipeline — integrating OpenAI APIs with OCR and NLP to cut manual
+                review effort by 40%+ while maintaining production-grade reliability.
+              </p>
+              <ul class="tag-list tag-list--sm">
+                <li class="tag">LLMs / OpenAI API</li>
+                <li class="tag">RAG</li>
+                <li class="tag">Python</li>
+                <li class="tag">Azure</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+
+        <!-- ==== LIVE GITHUB FEED (auto-populated by js/main.js) ==== -->
+        <div class="gh reveal">
+          <h3 class="gh__heading">More on my GitHub</h3>
+          <p class="gh__sub">
+            Pulled live from
+            <a class="link" href="https://github.com/hyalamanchi" target="_blank" rel="noopener">github.com/hyalamanchi</a>
+            — this updates automatically whenever I push a new project.
+          </p>
+        </div>
+        <p class="gh__status" id="gh-status">Loading projects from GitHub…</p>
+        <div class="grid grid--cards" id="gh-grid" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <!-- ============ EDUCATION & CERTIFICATIONS ============ -->
+    <section class="section section--alt" id="achievements">
+      <div class="container">
+        <h2 class="section__title reveal">Education &amp; Certifications</h2>
+        <p class="section__lead reveal">Academic foundation and professional credentials.</p>
+
+        <div class="edu reveal">
+          <h3 class="edu__title">🎓 M.S. in Data Science</h3>
+          <p class="edu__meta">Saint Louis University, MO · Dec 2024</p>
+          <p class="edu__note">
+            Relevant coursework: Machine Learning, Predictive Modeling, Database Systems, Data
+            Mining, Natural Language Processing, Linux System Administration.
+          </p>
+        </div>
+
+        <div class="grid grid--cards">
+          <!-- ==== CERTIFICATION CARD (copy for each) ==== -->
+          <article class="cert reveal">
+            <span class="cert__year">2024</span>
+            <h3 class="cert__title">Microsoft Certified: Azure Fundamentals (AZ-900)</h3>
+            <p class="cert__issuer">Microsoft</p>
+          </article>
+          <!-- ==== /CERTIFICATION CARD ==== -->
+          <article class="cert reveal">
+            <span class="cert__year">2025</span>
+            <h3 class="cert__title">TensorFlow Developer Certificate</h3>
+            <p class="cert__issuer">DataCamp</p>
+          </article>
+          <article class="cert reveal">
+            <span class="cert__year">2024</span>
+            <h3 class="cert__title">Data Science with Python &amp; R</h3>
+            <p class="cert__issuer">DataCamp</p>
+          </article>
+          <article class="cert reveal">
+            <span class="cert__year">2023</span>
+            <h3 class="cert__title">Project Management &amp; Digital Strategy</h3>
+            <p class="cert__issuer">SLU Excelerate</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ RESUME ============ -->
+    <section class="section" id="resume">
+      <div class="container resume">
+        <h2 class="section__title reveal">Resume</h2>
+        <p class="section__lead reveal">
+          Want the full details? Download my resume as a PDF.
+        </p>
+        <div class="reveal">
+          <!-- EDIT: place your file at assets/resume.pdf -->
+          <a href="assets/resume.pdf" class="btn btn--primary" download>Download Resume (PDF)</a>
+          <a href="assets/resume.pdf" class="btn btn--ghost" target="_blank" rel="noopener">View in browser</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="section container" id="contact">
+      <h2 class="section__title reveal">Get in Touch</h2>
+      <p class="section__lead reveal">
+        Have a question or an opportunity? Send me a message and I'll get back to you.
+      </p>
+
+      <!--
+        CONTACT FORM — connected to Formspree (form ID: mrenldpd).
+        Messages are delivered to hemayalamanchi708@gmail.com.
+        Note: the form only sends once the site is deployed online (not in local preview).
+      -->
+      <form class="contact-form reveal" id="contact-form"
+            action="https://formspree.io/f/mrenldpd" method="POST">
+        <div class="form-row">
+          <label for="cf-name">Name</label>
+          <input type="text" id="cf-name" name="name" required autocomplete="name" />
+        </div>
+        <div class="form-row">
+          <label for="cf-email">Email</label>
+          <input type="email" id="cf-email" name="email" required autocomplete="email" />
+        </div>
+        <div class="form-row">
+          <label for="cf-message">Message</label>
+          <textarea id="cf-message" name="message" rows="5" required></textarea>
+        </div>
+        <button type="submit" class="btn btn--primary">Send Message</button>
+        <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+      </form>
+
+      <!-- EDIT: your profile links (email stays hidden — the form handles contact) -->
+      <ul class="contact-list contact-list--social reveal">
+        <li><a class="link" href="https://linkedin.com/in/hemalatha-yalamanchi" target="_blank" rel="noopener">💼 LinkedIn</a></li>
+        <li><a class="link" href="https://github.com/hyalamanchi" target="_blank" rel="noopener">🐙 GitHub</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p>© <span id="year"></span> Hemalatha Yalamanchi. Built with care.</p>
+      <a href="#top" class="link">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

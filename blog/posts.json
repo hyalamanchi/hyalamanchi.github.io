@@ -1,0 +1,32 @@
+[
+  {
+    "slug": "why-im-starting-this-blog",
+    "title": "Why I'm Starting This Blog",
+    "date": "2026-07-25",
+    "category": "Roadmap",
+    "tags": ["AI/ML", "Career", "Writing"],
+    "summary": "A short note on what I'll be writing about here — building AI systems, working with messy real-world data, and where I think ML matters most.",
+    "readMinutes": 3,
+    "cover": ""
+  },
+  {
+    "slug": "lessons-from-document-ai-pipelines",
+    "title": "Lessons From Building Document-AI Pipelines",
+    "date": "2026-07-11",
+    "category": "Document AI",
+    "tags": ["OCR", "NLP", "LLMs", "MLOps"],
+    "summary": "OCR, NLP, and vision-language models look clean in a demo and messy in production. Here are the lessons that actually moved accuracy and reliability.",
+    "readMinutes": 6,
+    "cover": ""
+  },
+  {
+    "slug": "where-ai-helps-most-in-healthcare",
+    "title": "Where I Think AI Helps Most in Healthcare",
+    "date": "2026-06-27",
+    "category": "Healthcare AI",
+    "tags": ["Healthcare", "NLP", "Responsible AI"],
+    "summary": "Not every healthcare problem needs a model. A few places where AI genuinely earns its keep — and the guardrails that have to come with it.",
+    "readMinutes": 5,
+    "cover": ""
+  }
+]

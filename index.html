@@ -41,6 +41,7 @@
         <li><a href="#about" class="nav__link">About</a></li>
         <li><a href="#experience" class="nav__link">Experience</a></li>
         <li><a href="#projects" class="nav__link">Projects</a></li>
+        <li><a href="blog.html" class="nav__link">Blog</a></li>
         <li><a href="#achievements" class="nav__link">Achievements</a></li>
         <li><a href="#resume" class="nav__link">Resume</a></li>
         <li><a href="#contact" class="nav__link nav__link--cta">Contact</a></li>
@@ -287,22 +288,30 @@
           </article>
         </div>
 
-        <!-- ==== LIVE GITHUB FEED (auto-populated by js/main.js) ==== -->
         <div class="gh reveal">
-          <h3 class="gh__heading">More on my GitHub</h3>
           <p class="gh__sub">
-            Pulled live from
-            <a class="link" href="https://github.com/hyalamanchi" target="_blank" rel="noopener">github.com/hyalamanchi</a>
-            — this updates automatically whenever I push a new project.
+            Want to see more? Explore all my repositories on
+            <a class="link" href="https://github.com/hyalamanchi" target="_blank" rel="noopener">github.com/hyalamanchi</a>.
           </p>
+          <a href="https://github.com/hyalamanchi" class="btn btn--ghost" target="_blank" rel="noopener">Explore all repos on GitHub ↗</a>
         </div>
-        <p class="gh__status" id="gh-status">Loading projects from GitHub…</p>
-        <div class="grid grid--cards" id="gh-grid" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <!-- ============ LATEST WRITING (blog teaser) ============ -->
+    <section class="section section--alt" id="writing">
+      <div class="container">
+        <h2 class="section__title reveal">Latest Writing</h2>
+        <p class="section__lead reveal">Notes on AI/ML, data science, and healthcare AI — a new post every couple of weeks.</p>
+        <div id="home-blog"></div>
+        <div class="blog-more reveal">
+          <a href="blog.html" class="btn btn--primary">Read all posts →</a>
+        </div>
       </div>
     </section>
 
     <!-- ============ EDUCATION & CERTIFICATIONS ============ -->
-    <section class="section section--alt" id="achievements">
+    <section class="section" id="achievements">
       <div class="container">
         <h2 class="section__title reveal">Education &amp; Certifications</h2>
         <p class="section__lead reveal">Academic foundation and professional credentials.</p>
@@ -344,7 +353,7 @@
     </section>
 
     <!-- ============ RESUME ============ -->
-    <section class="section" id="resume">
+    <section class="section section--alt" id="resume">
       <div class="container resume">
         <h2 class="section__title reveal">Resume</h2>
         <p class="section__lead reveal">

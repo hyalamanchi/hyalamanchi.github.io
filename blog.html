@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog — Hemalatha Yalamanchi</title>
+  <meta name="description" content="Writing on AI/ML, data science, healthcare AI, and MLOps by Hemalatha Yalamanchi." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem('theme');
+        if (saved === 'light' || saved === 'dark') document.documentElement.setAttribute('data-theme', saved);
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+  <header class="site-header" id="top">
+    <nav class="nav container">
+      <a href="index.html" class="nav__logo">HY<span>.</span></a>
+      <div class="nav__actions">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark theme" title="Toggle theme">
+          <span class="theme-toggle__icon" aria-hidden="true">🌙</span>
+        </button>
+        <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+      <ul class="nav__menu" id="nav-menu">
+        <li><a href="index.html#about" class="nav__link">About</a></li>
+        <li><a href="index.html#experience" class="nav__link">Experience</a></li>
+        <li><a href="index.html#projects" class="nav__link">Projects</a></li>
+        <li><a href="index.html#achievements" class="nav__link">Achievements</a></li>
+        <li><a href="blog.html" class="nav__link is-active">Blog</a></li>
+        <li><a href="index.html#contact" class="nav__link nav__link--cta">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="section container">
+      <h1 class="section__title reveal">Blog</h1>
+      <p class="section__lead reveal">
+        Notes on AI/ML, data science, healthcare AI, and taking models from notebook to production.
+      </p>
+
+      <!-- Single-post view (used when ?p=<slug> is in the URL) -->
+      <article class="post" id="post-view"></article>
+
+      <!-- List view (card grid) -->
+      <div id="post-list"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p>© <span id="year"></span> Hemalatha Yalamanchi. Built with care.</p>
+      <a href="#top" class="link">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/blog.js"></script>
+</body>
+</html>

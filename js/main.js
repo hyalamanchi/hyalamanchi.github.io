@@ -292,6 +292,34 @@ document.documentElement.classList.remove('no-js');
       });
   }
 
+  /* ---- Homepage: latest blog posts ---- */
+  var homeBlog = document.getElementById('home-blog');
+  if (homeBlog) {
+    var esc = function (s) {
+      return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    };
+    fetch('blog/posts.json')
+      .then(function (r) { return r.ok ? r.json() : []; })
+      .then(function (posts) {
+        posts.sort(function (a, b) { return a.date < b.date ? 1 : -1; });
+        var latest = posts.slice(0, 3);
+        if (!latest.length) { homeBlog.innerHTML = '<p class="section__lead">Posts coming soon.</p>'; return; }
+        homeBlog.className = 'grid grid--cards blog-grid';
+        homeBlog.innerHTML = latest.map(function (p) {
+          var cover = p.cover ? ' style="background-image:url(' + encodeURI(p.cover) + ')"' : '';
+          var ph = p.cover ? '' : ' blog-card__media--placeholder';
+          var cat = p.category ? '<span class="blog-card__cat">✎ ' + esc(p.category) + '</span>' : '';
+          var date = new Date(p.date + 'T00:00:00').toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
+          return '<article class="blog-card"><a class="blog-card__link" href="blog.html?p=' + encodeURIComponent(p.slug) + '">' +
+            '<div class="blog-card__media' + ph + '"' + cover + '>' + cat + '</div>' +
+            '<div class="blog-card__body"><span class="blog-card__date">' + date + '</span>' +
+            '<h3 class="blog-card__title">' + esc(p.title) + '</h3>' +
+            '<p class="blog-card__excerpt">' + esc(p.summary || '') + '</p></div></a></article>';
+        }).join('');
+      })
+      .catch(function () {});
+  }
+
   /* ---- Footer year ---- */
   var yearEl = document.getElementById('year');
   if (yearEl) { yearEl.textContent = new Date().getFullYear(); }

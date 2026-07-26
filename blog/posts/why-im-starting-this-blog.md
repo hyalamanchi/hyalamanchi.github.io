@@ -8,12 +8,23 @@ I've spent the last few years building AI systems that turn messy, unstructured 
 
 This blog is where I'll write it down.
 
+## Two industries I keep coming back to
+
+Most of my work sits where AI meets the systems people depend on every day. Two industries matter to me most:
+
+- **Healthcare** — because being healthy is the foundation of everything else.
+- **Finance** — because staying well and building a life also takes financial stability.
+
+I don't think you can separate the two. A family's wellbeing rests on both good care *and* sound finances — and so does the resilience of a whole society and nation. Both are high-stakes, heavily regulated, and full of messy real-world data. That's exactly where thoughtful AI can remove toil and surface better decisions, as long as it's built responsibly.
+
+So while you'll see plenty about healthcare AI here, expect just as much about finance and the technical craft that serves both.
+
 ## What to expect
 
 I'm planning to post roughly every two weeks, alternating between two kinds of writing:
 
 - **Technical deep-dives** — how I approached a real problem, what worked, what didn't, and what I'd do differently.
-- **Industry reflections** — where I think AI genuinely helps (especially in healthcare), and where we should be careful.
+- **Industry reflections** — where AI genuinely helps in healthcare and finance, and where we should be careful.
 
 ## Why write at all?
 

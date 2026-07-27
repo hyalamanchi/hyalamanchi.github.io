@@ -32,7 +32,15 @@ document.documentElement.classList.remove('no-js');
 
   /* ---- Hero role typing effect ---- */
   // EDIT: change/reorder the roles that cycle in the hero.
-  var ROLES = ['AI/ML Engineer', 'Data Scientist', 'NLP Specialist', 'LLM Engineer'];
+  var ROLES = [
+    'AI/ML Engineer',
+    'Data Scientist',
+    'Data Analyst',
+    'Conversational AI Engineer',
+    'Data Engineer',
+    'NLP Engineer',
+    'LLM Engineer'
+  ];
   var typedEl = document.getElementById('role-typed');
   var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 

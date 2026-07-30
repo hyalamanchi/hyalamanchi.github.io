@@ -578,6 +578,38 @@ h1, h2, h3, h4 { line-height: 1.15; margin: 0 0 var(--space-3); font-family: var
 .card__desc { margin: 0; color: var(--text-muted); flex: 1; }
 .card__links { display: flex; gap: var(--space-4); }
 
+/* Bento project grid */
+.projects-bento {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-4);
+}
+.projects-bento .card--wide {
+  grid-column: 1 / -1;
+  flex-direction: row;
+}
+.projects-bento .card--wide .card__media {
+  flex: 0 0 44%;
+  aspect-ratio: auto;
+  min-height: 260px;
+}
+.projects-bento .card--wide .card__body {
+  justify-content: center;
+  padding: var(--space-5);
+}
+.projects-bento .card--wide .card__title { font-size: 1.6rem; }
+.projects-bento .card--wide .card__desc { font-size: 1.05rem; }
+
+@media (max-width: 720px) {
+  .projects-bento { grid-template-columns: 1fr; }
+  .projects-bento .card--wide { flex-direction: column; }
+  .projects-bento .card--wide .card__media {
+    flex: none;
+    aspect-ratio: 16 / 9;
+    min-height: 0;
+  }
+}
+
 /* Live GitHub feed */
 .gh { margin-top: var(--space-6); }
 .gh__heading { font-size: 1.6rem; margin-bottom: var(--space-2); }

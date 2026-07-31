@@ -65,13 +65,26 @@
     return new URLSearchParams(window.location.search).get(name);
   }
 
-  function blogCard(p) {
-    var cover = p.cover ? ' style="background-image:url(' + encodeURI(p.cover) + ')"' : "";
-    var placeholder = p.cover ? "" : " blog-card__media--placeholder";
+  var CAT_ICON = {
+    "Roadmap": "🧭",
+    "Document AI": "📄",
+    "Finance & Fintech": "💰",
+    "Healthcare AI": "🏥",
+    "Security & MLOps": "🔒",
+    "Career & Craft": "🎯",
+    "DevOps & Monitoring": "🔔"
+  };
+  function catGlyph(cat) { return CAT_ICON[cat] || "📝"; }
+
+  function blogCard(p, featured) {
+    var hasCover = !!p.cover;
+    var coverStyle = hasCover ? ' style="background-image:url(' + encodeURI(p.cover) + ')"' : "";
+    var placeholder = hasCover ? "" : " blog-card__media--placeholder";
+    var glyph = hasCover ? "" : '<span class="blog-card__glyph" aria-hidden="true">' + catGlyph(p.category) + "</span>";
     var cat = p.category ? '<span class="blog-card__cat">✎ ' + escapeHtml(p.category) + "</span>" : "";
-    return '<article class="blog-card">' +
+    return '<article class="blog-card' + (featured ? " blog-card--wide" : "") + '" data-cat="' + escapeHtml(p.category || "") + '">' +
       '<a class="blog-card__link" href="blog.html?p=' + encodeURIComponent(p.slug) + '">' +
-        '<div class="blog-card__media' + placeholder + '"' + cover + ">" + cat + "</div>" +
+        '<div class="blog-card__media' + placeholder + '"' + coverStyle + ">" + glyph + cat + "</div>" +
         '<div class="blog-card__body">' +
           '<span class="blog-card__date">' + fmtDate(p.date) + (p.readMinutes ? " · " + p.readMinutes + " min" : "") + "</span>" +
           '<h3 class="blog-card__title">' + escapeHtml(p.title) + "</h3>" +
@@ -111,12 +124,37 @@
         return;
       }
 
-      // List view — card grid with cover image, category, date, title, excerpt
+      // List view — filter pills + featured card + card grid
       if (listEl) {
         if (postEl) postEl.style.display = "none";
         if (!posts.length) { listEl.innerHTML = "<p class='section__lead'>No posts yet — check back soon!</p>"; return; }
-        listEl.innerHTML = '<div class="grid grid--cards blog-grid">' +
-          posts.map(blogCard).join("") + "</div>";
+
+        var cats = [];
+        posts.forEach(function (p) { if (p.category && cats.indexOf(p.category) === -1) cats.push(p.category); });
+
+        var pills = '<button class="blog-filter is-active" data-filter="all">All</button>' +
+          cats.map(function (c) {
+            return '<button class="blog-filter" data-filter="' + escapeHtml(c) + '">' + escapeHtml(c) + "</button>";
+          }).join("");
+
+        var cards = posts.map(function (p, idx) { return blogCard(p, idx === 0); }).join("");
+
+        listEl.innerHTML =
+          '<div class="blog-filters" id="blog-filters">' + pills + "</div>" +
+          '<div class="blog-bento" id="blog-bento">' + cards + "</div>";
+
+        // Filter behaviour
+        var filterBtns = listEl.querySelectorAll(".blog-filter");
+        var allCards = listEl.querySelectorAll(".blog-card");
+        filterBtns.forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            var f = btn.getAttribute("data-filter");
+            filterBtns.forEach(function (b) { b.classList.toggle("is-active", b === btn); });
+            allCards.forEach(function (c) {
+              c.style.display = (f === "all" || c.getAttribute("data-cat") === f) ? "" : "none";
+            });
+          });
+        });
       }
     })
     .catch(function () {

@@ -828,7 +828,37 @@ h1, h2, h3, h4 { line-height: 1.15; margin: 0 0 var(--space-3); font-family: var
   aspect-ratio: 16 / 10;
   background-size: cover;
   background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+.blog-card__glyph { font-size: 3rem; line-height: 1; filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.4)); }
+
+/* Category filter pills */
+.blog-filters { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-bottom: var(--space-5); }
+.blog-filter {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  padding: 0.45rem 1rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: border-color var(--transition), color var(--transition), background var(--transition);
+}
+.blog-filter:hover { border-color: var(--accent); color: var(--text); }
+.blog-filter.is-active { background: var(--gradient); color: #fff; border-color: transparent; }
+
+/* Bento blog grid with a featured card */
+.blog-bento { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-4); }
+.blog-card--wide { grid-column: 1 / -1; }
+.blog-card--wide .blog-card__link { display: grid; grid-template-columns: 1.15fr 1fr; }
+.blog-card--wide .blog-card__media { aspect-ratio: auto; min-height: 320px; height: 100%; }
+.blog-card--wide .blog-card__glyph { font-size: 4.4rem; }
+.blog-card--wide .blog-card__body { align-self: center; padding: var(--space-5); }
+.blog-card--wide .blog-card__title { font-size: 1.7rem; }
+.blog-card--wide .blog-card__excerpt { -webkit-line-clamp: 4; line-clamp: 4; }
 .blog-card__media--placeholder {
   background:
     linear-gradient(135deg,
@@ -898,6 +928,12 @@ h1, h2, h3, h4 { line-height: 1.15; margin: 0 0 var(--space-3); font-family: var
   .about { grid-template-columns: 1fr; }
   .about__sidebar { position: static; }
   .about__media { max-width: 260px; }
+
+  .blog-bento { grid-template-columns: 1fr; }
+  .blog-card--wide .blog-card__link { grid-template-columns: 1fr; }
+  .blog-card--wide .blog-card__media { min-height: 0; aspect-ratio: 16 / 9; }
+  .blog-filters { flex-wrap: nowrap; overflow-x: auto; padding-bottom: var(--space-2); }
+  .blog-filter { flex: 0 0 auto; }
 
   .nav__toggle { display: flex; }
   .nav__menu {

@@ -1,5 +1,25 @@
 [
   {
+    "slug": "datadog-to-google-chat-alerts",
+    "title": "From Datadog to Google Chat — Alerting People Actually See",
+    "date": "2026-07-28",
+    "category": "DevOps & Monitoring",
+    "tags": ["Monitoring", "DevOps", "Alerting", "Automation"],
+    "summary": "The best alert is the one a human sees in time to act. Why I replaced a heavyweight monitoring stack with Google Chat space alerts — cheaper, faster, and where the team already works.",
+    "readMinutes": 4,
+    "cover": ""
+  },
+  {
+    "slug": "choosing-a-vlm-for-noisy-documents",
+    "title": "Choosing a VLM for Noisy Documents — What Worked for Us",
+    "date": "2026-07-26",
+    "category": "Document AI",
+    "tags": ["VLM", "Document AI", "Gemini", "LLMs"],
+    "summary": "For noisy scans, Vision-Language Models beat OCR-plus-text. In our testing Gemini 2.5 gave the best extraction accuracy and efficiency — but the only benchmark that matters is your own documents.",
+    "readMinutes": 5,
+    "cover": ""
+  },
+  {
     "slug": "embeddings-and-real-problem-solving",
     "title": "Embeddings, Interviews, and the Skill AI Can't Replace",
     "date": "2026-07-30",

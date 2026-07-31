@@ -1,5 +1,15 @@
 [
   {
+    "slug": "securing-ml-pipelines",
+    "title": "Securing ML Pipelines — Key Vault, HIPAA, and Data Privacy",
+    "date": "2026-07-29",
+    "category": "Security & MLOps",
+    "tags": ["Security", "HIPAA", "MLOps", "Azure"],
+    "summary": "Security is the part of ML no one demos and everyone needs. How I secure pipelines that touch health and financial data — secrets, identity, least privilege, and HIPAA by design.",
+    "readMinutes": 6,
+    "cover": ""
+  },
+  {
     "slug": "why-im-starting-this-blog",
     "title": "Why I'm Starting This Blog",
     "date": "2026-07-25",

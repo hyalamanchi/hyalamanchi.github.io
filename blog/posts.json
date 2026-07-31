@@ -1,5 +1,15 @@
 [
   {
+    "slug": "embeddings-and-real-problem-solving",
+    "title": "Embeddings, Interviews, and the Skill AI Can't Replace",
+    "date": "2026-07-30",
+    "category": "Career & Craft",
+    "tags": ["Embeddings", "Interviews", "AI", "Problem-Solving"],
+    "summary": "An embeddings interview question became a way to measure how someone understands and tackles a problem on their own — and why the real skill is pairing fundamentals with using AI to solve business problems.",
+    "readMinutes": 5,
+    "cover": ""
+  },
+  {
     "slug": "securing-ml-pipelines",
     "title": "Securing ML Pipelines — Key Vault, HIPAA, and Data Privacy",
     "date": "2026-07-29",

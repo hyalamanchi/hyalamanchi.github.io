@@ -65,26 +65,27 @@
     return new URLSearchParams(window.location.search).get(name);
   }
 
-  var CAT_ICON = {
-    "Roadmap": "🧭",
-    "Document AI": "📄",
-    "Finance & Fintech": "💰",
-    "Healthcare AI": "🏥",
-    "Security & MLOps": "🔒",
-    "Career & Craft": "🎯",
-    "DevOps & Monitoring": "🔔"
+  var CAT_HUE = {
+    "Roadmap": 280,
+    "Document AI": 232,
+    "Finance & Fintech": 158,
+    "Healthcare AI": 330,
+    "Security & MLOps": 205,
+    "Career & Craft": 265,
+    "DevOps & Monitoring": 190
   };
-  function catGlyph(cat) { return CAT_ICON[cat] || "📝"; }
+  function catHue(cat) { return CAT_HUE[cat] != null ? CAT_HUE[cat] : 250; }
 
   function blogCard(p, featured) {
     var hasCover = !!p.cover;
-    var coverStyle = hasCover ? ' style="background-image:url(' + encodeURI(p.cover) + ')"' : "";
+    var mediaStyle = hasCover
+      ? ' style="background-image:url(' + encodeURI(p.cover) + ')"'
+      : ' style="--cover-hue:' + catHue(p.category) + '"';
     var placeholder = hasCover ? "" : " blog-card__media--placeholder";
-    var glyph = hasCover ? "" : '<span class="blog-card__glyph" aria-hidden="true">' + catGlyph(p.category) + "</span>";
     var cat = p.category ? '<span class="blog-card__cat">✎ ' + escapeHtml(p.category) + "</span>" : "";
     return '<article class="blog-card' + (featured ? " blog-card--wide" : "") + '" data-cat="' + escapeHtml(p.category || "") + '">' +
       '<a class="blog-card__link" href="blog.html?p=' + encodeURIComponent(p.slug) + '">' +
-        '<div class="blog-card__media' + placeholder + '"' + coverStyle + ">" + glyph + cat + "</div>" +
+        '<div class="blog-card__media' + placeholder + '"' + mediaStyle + ">" + cat + "</div>" +
         '<div class="blog-card__body">' +
           '<span class="blog-card__date">' + fmtDate(p.date) + (p.readMinutes ? " · " + p.readMinutes + " min" : "") + "</span>" +
           '<h3 class="blog-card__title">' + escapeHtml(p.title) + "</h3>" +

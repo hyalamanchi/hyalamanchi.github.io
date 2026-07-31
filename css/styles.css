@@ -860,14 +860,27 @@ h1, h2, h3, h4 { line-height: 1.15; margin: 0 0 var(--space-3); font-family: var
 .blog-card--wide .blog-card__title { font-size: 1.7rem; }
 .blog-card--wide .blog-card__excerpt { -webkit-line-clamp: 4; line-clamp: 4; }
 .blog-card__media--placeholder {
+  --h: var(--cover-hue, 250);
   background:
-    linear-gradient(135deg,
-      color-mix(in srgb, var(--grad-1) 55%, var(--bg-alt)),
-      color-mix(in srgb, var(--grad-2) 45%, var(--bg-alt)) 50%,
-      color-mix(in srgb, var(--grad-3) 55%, var(--bg-alt)));
+    radial-gradient(120% 120% at 12% 16%, hsl(var(--h) 90% 66% / 0.60), transparent 55%),
+    radial-gradient(120% 120% at 88% 20%, hsl(calc(var(--h) + 45) 88% 62% / 0.55), transparent 55%),
+    radial-gradient(150% 140% at 68% 108%, hsl(calc(var(--h) - 35) 90% 60% / 0.60), transparent 62%),
+    #0b0e15;
+}
+.blog-card__media--placeholder::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.16) 1px, transparent 1.5px);
+  background-size: 22px 22px;
+  -webkit-mask-image: radial-gradient(130% 100% at 50% 0%, #000 22%, transparent 78%);
+  mask-image: radial-gradient(130% 100% at 50% 0%, #000 22%, transparent 78%);
+  opacity: 0.55;
+  pointer-events: none;
 }
 .blog-card__cat {
   position: absolute; top: var(--space-3); left: var(--space-3);
+  z-index: 2;
   font-family: var(--font-mono);
   font-size: 0.72rem;
   padding: 0.3rem 0.7rem;

@@ -84,7 +84,7 @@
     var placeholder = hasCover ? "" : " blog-card__media--placeholder";
     var cat = p.category ? '<span class="blog-card__cat">✎ ' + escapeHtml(p.category) + "</span>" : "";
     return '<article class="blog-card' + (featured ? " blog-card--wide" : "") + '" data-cat="' + escapeHtml(p.category || "") + '">' +
-      '<a class="blog-card__link" href="blog.html?p=' + encodeURIComponent(p.slug) + '">' +
+      '<a class="blog-card__link" href="blog/p/' + encodeURIComponent(p.slug) + '.html">' +
         '<div class="blog-card__media' + placeholder + '"' + mediaStyle + ">" + cat + "</div>" +
         '<div class="blog-card__body">' +
           '<span class="blog-card__date">' + fmtDate(p.date) + (p.readMinutes ? " · " + p.readMinutes + " min" : "") + "</span>" +
@@ -104,24 +104,11 @@
       posts.sort(function (a, b) { return a.date < b.date ? 1 : -1; }); // newest first
       var slug = getParam("p");
 
-      if (slug && postEl) {
-        var post = posts.filter(function (p) { return p.slug === slug; })[0];
-        if (!post) { postEl.innerHTML = "<p>Post not found. <a class='link' href='blog.html'>Back to all posts</a></p>"; return; }
-        document.title = post.title + " — Hemalatha Yalamanchi";
-        if (listEl) listEl.style.display = "none";
-        fetch("blog/posts/" + post.slug + ".md")
-          .then(function (r) { if (!r.ok) throw new Error("md " + r.status); return r.text(); })
-          .then(function (md) {
-            postEl.innerHTML =
-              '<a class="link post__back" href="blog.html">← All posts</a>' +
-              '<p class="post__meta">' + fmtDate(post.date) +
-                (post.readMinutes ? " · " + post.readMinutes + " min read" : "") + "</p>" +
-              "<h1 class=\"post__title\">" + escapeHtml(post.title) + "</h1>" +
-              tagChips(post.tags) +
-              '<div class="post__body">' + renderMarkdown(md) + "</div>" +
-              '<a class="link post__back" href="blog.html">← All posts</a>';
-          })
-          .catch(function () { postEl.innerHTML = "<p>Couldn't load this post.</p>"; });
+      // Posts now live at their own static page (blog/p/<slug>.html) so social
+      // crawlers get per-post Open Graph tags. Redirect any old ?p= link there.
+      if (slug) {
+        var exists = posts.some(function (p) { return p.slug === slug; });
+        window.location.replace(exists ? "blog/p/" + slug + ".html" : "blog.html");
         return;
       }
 

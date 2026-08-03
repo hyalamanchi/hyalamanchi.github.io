@@ -321,7 +321,7 @@ document.documentElement.classList.remove('no-js');
           var ph = p.cover ? '' : ' blog-card__media--placeholder';
           var cat = p.category ? '<span class="blog-card__cat">✎ ' + esc(p.category) + '</span>' : '';
           var date = new Date(p.date + 'T00:00:00').toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
-          return '<article class="blog-card"><a class="blog-card__link" href="blog.html?p=' + encodeURIComponent(p.slug) + '">' +
+          return '<article class="blog-card"><a class="blog-card__link" href="blog/p/' + encodeURIComponent(p.slug) + '.html">' +
             '<div class="blog-card__media' + ph + '"' + mediaStyle + '>' + cat + '</div>' +
             '<div class="blog-card__body"><span class="blog-card__date">' + date + '</span>' +
             '<h3 class="blog-card__title">' + esc(p.title) + '</h3>' +

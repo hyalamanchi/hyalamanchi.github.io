@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Choosing a VLM for Noisy Documents — What Worked for Us — Hemalatha Yalamanchi</title>
+  <meta name="description" content="For noisy scans, Vision-Language Models beat OCR-plus-text. In our testing Gemini 2.5 gave the best extraction accuracy and efficiency — but the only benchmark that matters is your own documents." />
+  <link rel="canonical" href="https://hyalamanchi.github.io/blog/p/choosing-a-vlm-for-noisy-documents.html" />
+
+  <!-- Open Graph (LinkedIn, Facebook, Slack) -->
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Hemalatha Yalamanchi" />
+  <meta property="og:title" content="Choosing a VLM for Noisy Documents — What Worked for Us" />
+  <meta property="og:description" content="For noisy scans, Vision-Language Models beat OCR-plus-text. In our testing Gemini 2.5 gave the best extraction accuracy and efficiency — but the only benchmark that matters is your own documents." />
+  <meta property="og:url" content="https://hyalamanchi.github.io/blog/p/choosing-a-vlm-for-noisy-documents.html" />
+  <meta property="og:image" content="https://hyalamanchi.github.io/assets/og/choosing-a-vlm-for-noisy-documents.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="article:published_time" content="2026-07-26" />
+  <meta property="article:author" content="Hemalatha Yalamanchi" />
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Choosing a VLM for Noisy Documents — What Worked for Us" />
+  <meta name="twitter:description" content="For noisy scans, Vision-Language Models beat OCR-plus-text. In our testing Gemini 2.5 gave the best extraction accuracy and efficiency — but the only benchmark that matters is your own documents." />
+  <meta name="twitter:image" content="https://hyalamanchi.github.io/assets/og/choosing-a-vlm-for-noisy-documents.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../css/styles.css" />
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem('theme');
+        if (saved === 'light' || saved === 'dark') document.documentElement.setAttribute('data-theme', saved);
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+  <header class="site-header" id="top">
+    <nav class="nav container">
+      <a href="../../index.html" class="nav__logo">HY<span>.</span></a>
+      <div class="nav__actions">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark theme" title="Toggle theme">
+          <span class="theme-toggle__icon" aria-hidden="true">🌙</span>
+        </button>
+        <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+      <ul class="nav__menu" id="nav-menu">
+        <li><a href="../../index.html#about" class="nav__link">About</a></li>
+        <li><a href="../../index.html#experience" class="nav__link">Experience</a></li>
+        <li><a href="../../index.html#projects" class="nav__link">Projects</a></li>
+        <li><a href="../../index.html#achievements" class="nav__link">Achievements</a></li>
+        <li><a href="../../blog.html" class="nav__link is-active">Blog</a></li>
+        <li><a href="../../index.html#contact" class="nav__link nav__link--cta">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="section container">
+      <article class="post">
+        <a class="link post__back" href="../../blog.html">← All posts</a>
+        <p class="post__meta">July 26, 2026 · 5 min read</p>
+        <h1 class="post__title">Choosing a VLM for Noisy Documents — What Worked for Us</h1>
+        <ul class="tag-list tag-list--sm"><li class="tag">VLM</li><li class="tag">Document AI</li><li class="tag">Gemini</li><li class="tag">LLMs</li></ul>
+        <div class="post__body"><p>When documents are clean, plain OCR plus a text model gets you a long way. When they're <strong>noisy</strong> — skewed scans, stamps over text, faint print, mixed layouts — that pipeline starts to crack. This is where <strong>Vision-Language Models (VLMs)</strong> earn their keep: they read the <em>image</em> and the <em>text together</em>, so layout and visual context aren't lost before the model ever sees them.</p><h2>Why VLMs for noisy documents</h2><p>A text-only pipeline throws away everything OCR can't cleanly transcribe. A VLM keeps the picture:</p><ul><li>It sees where a field sits, not just the characters OCR guessed.</li><li>It tolerates stamps, handwriting, and low quality better, because it isn't fully dependent on a perfect OCR pass.</li><li>It reasons over structure — tables, forms, columns — as visual layout, not a flattened string.</li></ul><p>For our messiest documents, moving extraction to a VLM was the single biggest accuracy jump.</p><h2>What I found comparing models</h2><p>I benchmarked VLMs on our own noisy document set — and model choice mattered a lot. <strong>In our testing, Gemini 2.5 gave the best extraction accuracy</strong> on these documents, and did it efficiently. For our data-extraction tasks, Claude's VLM used <strong>more tokens</strong> and returned <strong>less accurate extractions</strong>, which made it a poorer fit for this particular workload.</p><p>A few honest caveats:</p><ul><li>This is <strong>our data</strong>, not a universal benchmark. Document sets differ enormously, and so do results.</li><li>Model quality moves fast — today's ranking can flip with the next release.</li><li>The only ranking that matters is the one <strong>you measure on your own documents</strong>.</li></ul><h2>The takeaway</h2><p>Don't pick a VLM by reputation — pick it by evidence. Build a small labeled set of your hardest, noisiest documents, run each candidate against it, and measure both <strong>accuracy and token cost</strong>. For us, that process pointed clearly at Gemini 2.5.</p><blockquote>For noisy documents, a VLM beats OCR-plus-text. Which VLM? Let your own data decide.</blockquote><p>Benchmarks on your real documents beat any leaderboard.</p></div>
+        <a class="link post__back" href="../../blog.html">← All posts</a>
+      </article>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p>© <span id="year"></span> Hemalatha Yalamanchi. Built with care.</p>
+      <a href="#top" class="link">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <script src="../../js/main.js"></script>
+</body>
+</html>

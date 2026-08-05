@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="Hemalatha Yalamanchi avatar">
+  <defs>
+    <radialGradient id="av-bg" cx="30%" cy="24%" r="95%">
+      <stop offset="0" stop-color="#8b93ff"/>
+      <stop offset="48%" stop-color="#6d4bd8"/>
+      <stop offset="100%" stop-color="#0b0e15"/>
+    </radialGradient>
+    <radialGradient id="av-glow" cx="50%" cy="60%" r="55%">
+      <stop offset="0" stop-color="#5eead4" stop-opacity="0.55"/>
+      <stop offset="70%" stop-color="#5eead4" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="400" height="400" fill="url(#av-bg)"/>
+  <!-- subtle dot-grid texture -->
+  <g fill="#ffffff" opacity="0.10">
+    <circle cx="60" cy="70" r="3"/><circle cx="120" cy="50" r="2.4"/><circle cx="330" cy="90" r="2.6"/>
+    <circle cx="360" cy="180" r="3"/><circle cx="70" cy="300" r="2.6"/><circle cx="300" cy="330" r="2.4"/>
+    <circle cx="40" cy="200" r="2.2"/><circle cx="200" cy="40" r="2.2"/>
+  </g>
+  <circle cx="200" cy="235" r="150" fill="url(#av-glow)"/>
+  <text x="50%" y="53%" font-size="215" text-anchor="middle" dominant-baseline="central">👩‍💻</text>
+</svg>

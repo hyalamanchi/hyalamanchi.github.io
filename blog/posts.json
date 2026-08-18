@@ -1,5 +1,35 @@
 [
   {
+    "slug": "one-week-no-prd-lead-alert-system",
+    "title": "One Week, No PRD — Shipping a Lead-Alert System Under Pressure",
+    "date": "2026-08-15",
+    "category": "Career & Craft",
+    "tags": ["Shipping", "Startups", "Azure", "Intune"],
+    "summary": "A dip in sales, an urgent ask straight from the CEO, and one week to ship — no requirements, no PRD, and the IT team on leave. What I built, what I learned about Azure Intune and app permissions, and why the hectic weeks teach the most.",
+    "readMinutes": 6,
+    "cover": ""
+  },
+  {
+    "slug": "rules-and-models-decision-engine",
+    "title": "Rules + Models — Building an Explainable Decision Engine",
+    "date": "2026-08-11",
+    "category": "ML Engineering",
+    "tags": ["MLOps", "FastAPI", "Decision Systems", "Explainability"],
+    "summary": "When a recommendation touches money, 'the model said so' isn't good enough. How I combined deterministic business rules with a predictive model into one explainable decision engine — and why I kept them decoupled.",
+    "readMinutes": 5,
+    "cover": ""
+  },
+  {
+    "slug": "what-actually-moved-my-regression-model",
+    "title": "What Actually Moved My Regression Model",
+    "date": "2026-08-07",
+    "category": "ML Engineering",
+    "tags": ["XGBoost", "Regression", "Feature Engineering", "MLOps"],
+    "summary": "Not hyperparameter magic — data and features. How expanding the dataset 2.7×, locating feature gaps, and a hybrid XGBoost + Ridge ensemble improved a fee-prediction model, especially on the highest-value cases.",
+    "readMinutes": 5,
+    "cover": ""
+  },
+  {
     "slug": "datadog-to-google-chat-alerts",
     "title": "From Datadog to Google Chat — Alerting People Actually See",
     "date": "2026-07-28",

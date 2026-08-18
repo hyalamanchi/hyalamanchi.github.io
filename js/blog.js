@@ -72,7 +72,8 @@
     "Healthcare AI": 330,
     "Security & MLOps": 205,
     "Career & Craft": 265,
-    "DevOps & Monitoring": 190
+    "DevOps & Monitoring": 190,
+    "ML Engineering": 250
   };
   function catHue(cat) { return CAT_HUE[cat] != null ? CAT_HUE[cat] : 250; }
 

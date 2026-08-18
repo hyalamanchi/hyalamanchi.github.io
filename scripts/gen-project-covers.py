@@ -100,10 +100,74 @@ def llm_motif():
     return "".join(p)
 
 
+def alert_motif():
+    """Lead Alert System — a ringing bell broadcasting real-time alerts."""
+    p = []
+    p.append('<g fill="none" stroke="%s" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" filter="url(#gl)">' % LINE)
+    # bell body + handle + clapper
+    p.append('<path d="M640 235 c-52 0 -88 38 -88 95 c0 60 -22 82 -42 105 l260 0 c-20 -23 -42 -45 -42 -105 c0 -57 -36 -95 -88 -95 z"/>')
+    p.append('<circle cx="640" cy="226" r="11"/>')
+    p.append('<path d="M612 445 a28 22 0 0 0 56 0"/>')
+    p.append("</g>")
+    # signal arcs (both sides)
+    p.append('<g fill="none" stroke="%s" stroke-width="4" stroke-linecap="round">' % ACC)
+    p.append('<path d="M762 300 a72 72 0 0 1 0 130"/>')
+    p.append('<path d="M792 272 a108 108 0 0 1 0 186"/>')
+    p.append('<path d="M518 300 a72 72 0 0 0 0 130"/>')
+    p.append('<path d="M488 272 a108 108 0 0 0 0 186"/>')
+    p.append("</g>")
+    # attention badge
+    p.append('<circle cx="716" cy="248" r="20" fill="%s" filter="url(#gl)"/>' % ACC)
+    return "".join(p)
+
+
+def decision_motif():
+    """Fee Decision Engine — rules + model branches merging into one decision."""
+    p = []
+    p.append('<g fill="none" stroke="%s" stroke-width="3.5" filter="url(#gl)">' % LINE)
+    p.append('<rect x="360" y="320" width="120" height="80" rx="12"/>')          # input
+    p.append('<rect x="800" y="315" width="150" height="90" rx="12"/>')          # output
+    p.append('<path d="M700 175 l60 65 -60 65 -60 -65 z"/>')                     # rules diamond
+    p.append('<circle cx="700" cy="470" r="46"/>')                              # model circle
+    p.append("</g>")
+    # connectors
+    p.append('<g fill="none" stroke="%s" stroke-width="2.5">' % FAINT)
+    p.append('<path d="M480 350 C580 350 560 240 640 240"/>')
+    p.append('<path d="M480 372 C580 372 600 470 654 470"/>')
+    p.append('<path d="M760 240 C840 240 800 350 800 355"/>')
+    p.append('<path d="M746 470 C840 470 800 372 800 372"/>')
+    p.append("</g>")
+    # decision check inside output (accent)
+    p.append('<path d="M832 360 l18 20 34 -40" fill="none" stroke="%s" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" filter="url(#gl)"/>' % ACC)
+    return "".join(p)
+
+
+def scatter_motif():
+    """Fee Prediction Model — a scatter with a best-fit regression line."""
+    pts = [(500, 470), (545, 435), (560, 470), (600, 410), (640, 435), (655, 390),
+           (690, 405), (720, 360), (735, 400), (770, 335), (805, 315), (845, 285)]
+    p = []
+    # axes + gridlines
+    p.append('<path d="M455 170 V540 H900" fill="none" stroke="%s" stroke-width="3"/>' % FAINT)
+    for gy in (250, 350, 450):
+        p.append('<line x1="455" y1="%d" x2="900" y2="%d" stroke="%s" stroke-width="1.5" stroke-dasharray="3 8"/>' % (gy, gy, FAINT))
+    # regression line
+    p.append('<line x1="480" y1="495" x2="880" y2="255" stroke="%s" stroke-width="4" stroke-linecap="round" filter="url(#gl)"/>' % LINE)
+    # scatter points
+    for (x, y) in pts:
+        p.append('<circle cx="%d" cy="%d" r="8" fill="none" stroke="%s" stroke-width="3"/>' % (x, y, "rgba(235,244,255,0.8)"))
+    # highlighted prediction on the line
+    p.append('<circle cx="855" cy="264" r="10" fill="%s" filter="url(#gl)"/>' % ACC)
+    return "".join(p)
+
+
 PROJECTS = [
     {"key": "doc-parser", "hue": 232, "motif": doc_motif},
     {"key": "latency-predictor", "hue": 196, "motif": net_motif},
     {"key": "llm-classification", "hue": 268, "motif": llm_motif},
+    {"key": "lead-alert", "hue": 330, "motif": alert_motif},
+    {"key": "decision-engine", "hue": 152, "motif": decision_motif},
+    {"key": "fee-model", "hue": 30, "motif": scatter_motif},
 ]
 
 PAGE = """<!DOCTYPE html><html><head><meta charset="utf-8"><style>

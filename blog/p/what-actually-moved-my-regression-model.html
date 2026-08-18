@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>What Actually Moved My Regression Model — Hemalatha Yalamanchi</title>
+  <meta name="description" content="Not hyperparameter magic — data and features. How expanding the dataset 2.7×, locating feature gaps, and a hybrid XGBoost + Ridge ensemble improved a fee-prediction model, especially on the highest-value cases." />
+  <link rel="canonical" href="https://hyalamanchi.github.io/blog/p/what-actually-moved-my-regression-model.html" />
+
+  <!-- Open Graph (LinkedIn, Facebook, Slack) -->
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Hemalatha Yalamanchi" />
+  <meta property="og:title" content="What Actually Moved My Regression Model" />
+  <meta property="og:description" content="Not hyperparameter magic — data and features. How expanding the dataset 2.7×, locating feature gaps, and a hybrid XGBoost + Ridge ensemble improved a fee-prediction model, especially on the highest-value cases." />
+  <meta property="og:url" content="https://hyalamanchi.github.io/blog/p/what-actually-moved-my-regression-model.html" />
+  <meta property="og:image" content="https://hyalamanchi.github.io/assets/og/what-actually-moved-my-regression-model.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="article:published_time" content="2026-08-07" />
+  <meta property="article:author" content="Hemalatha Yalamanchi" />
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="What Actually Moved My Regression Model" />
+  <meta name="twitter:description" content="Not hyperparameter magic — data and features. How expanding the dataset 2.7×, locating feature gaps, and a hybrid XGBoost + Ridge ensemble improved a fee-prediction model, especially on the highest-value cases." />
+  <meta name="twitter:image" content="https://hyalamanchi.github.io/assets/og/what-actually-moved-my-regression-model.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../css/styles.css" />
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem('theme');
+        if (saved === 'light' || saved === 'dark') document.documentElement.setAttribute('data-theme', saved);
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+  <header class="site-header" id="top">
+    <nav class="nav container">
+      <a href="../../index.html" class="nav__logo">HY<span>.</span></a>
+      <div class="nav__actions">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark theme" title="Toggle theme">
+          <span class="theme-toggle__icon" aria-hidden="true">🌙</span>
+        </button>
+        <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+      <ul class="nav__menu" id="nav-menu">
+        <li><a href="../../index.html#about" class="nav__link">About</a></li>
+        <li><a href="../../index.html#experience" class="nav__link">Experience</a></li>
+        <li><a href="../../index.html#projects" class="nav__link">Projects</a></li>
+        <li><a href="../../index.html#achievements" class="nav__link">Achievements</a></li>
+        <li><a href="../../blog.html" class="nav__link is-active">Blog</a></li>
+        <li><a href="../../index.html#contact" class="nav__link nav__link--cta">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="section container">
+      <article class="post">
+        <a class="link post__back" href="../../blog.html">← All posts</a>
+        <p class="post__meta">August 7, 2026 · 5 min read</p>
+        <h1 class="post__title">What Actually Moved My Regression Model</h1>
+        <ul class="tag-list tag-list--sm"><li class="tag">XGBoost</li><li class="tag">Regression</li><li class="tag">Feature Engineering</li><li class="tag">MLOps</li></ul>
+        <div class="post__body"><p>When people ask how I improved a prediction model, they often expect a story about clever</p><p>hyperparameter tuning. The honest answer is less glamorous and more useful: **it was the</p><p>data and the features**, not tuning knobs.</p><p>Here's what actually moved a fee-prediction model — and what didn't.</p><h2>More data, but the <em>right</em> more</h2><p>The biggest single lever was expanding the training set. By pulling <strong>full-case data</strong></p><p>instead of a partial slice, I grew the corpus <strong>2.7×</strong>. That alone took the model from</p><p><strong>R² 0.71 to 0.77</strong> and cut overall error meaningfully.</p><p>But the headline number hides the important part: the model got **~44% more accurate on</p><p>the highest-value cases** — the segment where a wrong prediction is most costly. Averages</p><p>can lie. Always look at the slice that matters most.</p><h2>Finding out <em>where</em> it was wrong</h2><p>I didn't stop at aggregate metrics. I compared the model's predictions against expert</p><p>estimates and actual outcomes, and looked hard at <em>where the gaps were</em>. That surfaced</p><p><strong>missing feature signals</strong> — things like region, the magnitude of the case, and scope</p><p>drivers the model simply couldn't see. You can't fix a blind spot you haven't located.</p><h2>A hybrid, not a hero model</h2><p>Instead of betting everything on one algorithm, I built a <strong>hybrid approach</strong>:</p><ul><li><strong>XGBoost + Ridge</strong> ensemble predictions, combining a flexible learner with a stable one.</li><li><strong>Expert-rule overlays</strong>, so hard-won practitioner knowledge could correct the model</li></ul><p>  where it was known to drift.</p><ul><li><strong>Missingness-aware routing</strong>, so cases with incomplete data were handled deliberately</li></ul><p>  instead of being silently mis-predicted.</p><ul><li><strong>Feature-stability tracking</strong>, to catch features whose behavior drifted over time.</li></ul><h2>The features I <em>didn't</em> keep</h2><p>Just as important: I evaluated extra features and <strong>threw some away</strong>. A batch of</p><p>candidate signals turned out to be <strong>multicollinear or misleading</strong>, and adding them</p><p>would have <em>degraded</em> performance while looking productive. Restraint is a feature.</p><h2>The takeaways</h2><ul><li><strong>Data and features beat tuning.</strong> Spend your time there first.</li><li><strong>Measure on the segment that matters</strong>, not just the global average.</li><li><strong>Locate errors before fixing them</strong> — compare against experts and reality.</li><li><strong>Encode expert knowledge explicitly</strong>, and <strong>handle missing data on purpose</strong>.</li><li><strong>More features is not more signal.</strong> Prune the ones that mislead.</li></ul><p>The model didn't get better because I found a magic setting. It got better because I gave</p><p>it more of the right data, showed it the signals it was missing, and stopped it from</p><p>learning the wrong things.</p></div>
+        <a class="link post__back" href="../../blog.html">← All posts</a>
+      </article>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p>© <span id="year"></span> Hemalatha Yalamanchi. Built with care.</p>
+      <a href="#top" class="link">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <script src="../../js/main.js"></script>
+</body>
+</html>

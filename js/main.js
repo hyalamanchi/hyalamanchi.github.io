@@ -312,7 +312,7 @@ document.documentElement.classList.remove('no-js');
         posts.sort(function (a, b) { return a.date < b.date ? 1 : -1; });
         var latest = posts.slice(0, 3);
         if (!latest.length) { homeBlog.innerHTML = '<p class="section__lead">Posts coming soon.</p>'; return; }
-        var CAT_HUE = { 'Roadmap': 280, 'Document AI': 232, 'Finance & Fintech': 158, 'Healthcare AI': 330, 'Security & MLOps': 205, 'Career & Craft': 265, 'DevOps & Monitoring': 190 };
+        var CAT_HUE = { 'Roadmap': 280, 'Document AI': 232, 'Finance & Fintech': 158, 'Healthcare AI': 330, 'Security & MLOps': 205, 'Career & Craft': 265, 'DevOps & Monitoring': 190, 'ML Engineering': 250 };
         homeBlog.className = 'grid grid--cards blog-grid';
         homeBlog.innerHTML = latest.map(function (p) {
           var mediaStyle = p.cover

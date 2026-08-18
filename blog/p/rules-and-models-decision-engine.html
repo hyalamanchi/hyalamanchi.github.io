@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rules + Models — Building an Explainable Decision Engine — Hemalatha Yalamanchi</title>
+  <meta name="description" content="When a recommendation touches money, &#x27;the model said so&#x27; isn&#x27;t good enough. How I combined deterministic business rules with a predictive model into one explainable decision engine — and why I kept them decoupled." />
+  <link rel="canonical" href="https://hyalamanchi.github.io/blog/p/rules-and-models-decision-engine.html" />
+
+  <!-- Open Graph (LinkedIn, Facebook, Slack) -->
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Hemalatha Yalamanchi" />
+  <meta property="og:title" content="Rules + Models — Building an Explainable Decision Engine" />
+  <meta property="og:description" content="When a recommendation touches money, &#x27;the model said so&#x27; isn&#x27;t good enough. How I combined deterministic business rules with a predictive model into one explainable decision engine — and why I kept them decoupled." />
+  <meta property="og:url" content="https://hyalamanchi.github.io/blog/p/rules-and-models-decision-engine.html" />
+  <meta property="og:image" content="https://hyalamanchi.github.io/assets/og/rules-and-models-decision-engine.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="article:published_time" content="2026-08-11" />
+  <meta property="article:author" content="Hemalatha Yalamanchi" />
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Rules + Models — Building an Explainable Decision Engine" />
+  <meta name="twitter:description" content="When a recommendation touches money, &#x27;the model said so&#x27; isn&#x27;t good enough. How I combined deterministic business rules with a predictive model into one explainable decision engine — and why I kept them decoupled." />
+  <meta name="twitter:image" content="https://hyalamanchi.github.io/assets/og/rules-and-models-decision-engine.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../css/styles.css" />
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem('theme');
+        if (saved === 'light' || saved === 'dark') document.documentElement.setAttribute('data-theme', saved);
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+  <header class="site-header" id="top">
+    <nav class="nav container">
+      <a href="../../index.html" class="nav__logo">HY<span>.</span></a>
+      <div class="nav__actions">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark theme" title="Toggle theme">
+          <span class="theme-toggle__icon" aria-hidden="true">🌙</span>
+        </button>
+        <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+      <ul class="nav__menu" id="nav-menu">
+        <li><a href="../../index.html#about" class="nav__link">About</a></li>
+        <li><a href="../../index.html#experience" class="nav__link">Experience</a></li>
+        <li><a href="../../index.html#projects" class="nav__link">Projects</a></li>
+        <li><a href="../../index.html#achievements" class="nav__link">Achievements</a></li>
+        <li><a href="../../blog.html" class="nav__link is-active">Blog</a></li>
+        <li><a href="../../index.html#contact" class="nav__link nav__link--cta">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="section container">
+      <article class="post">
+        <a class="link post__back" href="../../blog.html">← All posts</a>
+        <p class="post__meta">August 11, 2026 · 5 min read</p>
+        <h1 class="post__title">Rules + Models — Building an Explainable Decision Engine</h1>
+        <ul class="tag-list tag-list--sm"><li class="tag">MLOps</li><li class="tag">FastAPI</li><li class="tag">Decision Systems</li><li class="tag">Explainability</li></ul>
+        <div class="post__body"><p>When a recommendation touches money, <em>"the model said so"</em> is not an acceptable answer.</p><p>Someone will ask <strong>why</strong> — a colleague, a manager, a client — and "the neural net felt</p><p>strongly about it" won't do. That constraint shaped how I built a decision engine for</p><p>automated fee recommendations.</p><h2>Why not just a model?</h2><p>A single predictive model is tempting: feed in the case, get a number out. But on its</p><p>own it struggles with the things a business actually cares about:</p><ul><li><strong>Edge cases</strong> where a hard business rule must always win.</li><li><strong>Explainability</strong> — you need to point at <em>why</em> a recommendation came out the way it did.</li><li><strong>Consistency</strong> — similar cases should get similar answers, every time.</li></ul><h2>Why not just rules?</h2><p>Pure rules are explainable and consistent, but brittle. They can't capture the nuance in</p><p>messy, real-world cases, and they turn into an unmaintainable thicket of <code>if</code> statements</p><p>the moment reality gets complicated.</p><h2>The engine: rules <em>and</em> a model, kept apart</h2><p>I built the engine on <strong>FastAPI + PostgreSQL</strong>, with two clearly separated layers:</p><ol><li>A <strong>deterministic rule layer</strong> that encodes the non-negotiable business logic.</li><li>A <strong>predictive model</strong> that handles the nuance the rules can't.</li></ol><p>Both feed into a <strong>single decision workflow</strong> that produces one recommendation <em>and</em> a</p><p>reason trail explaining how it got there. Crucially, the rules and the model are</p><p><strong>decoupled</strong> — each can evolve independently. When the business changes a policy, I edit</p><p>a rule; I don't retrain a model. When the data shifts, I retrain the model; I don't touch</p><p>the rules.</p><h2>Trust comes from visibility</h2><p>I added <strong>model-performance and prediction-validation dashboards</strong> — tracking prediction</p><p>reliability, feature importance, and decision quality over time. A decision engine you</p><p>can't inspect is a liability; one you can watch is an asset.</p><h2>What I'd tell my past self</h2><ul><li><strong>Separate deterministic logic from prediction.</strong> It's the single decision that made</li></ul><p>  everything else maintainable.</p><ul><li><strong>Design for "why" from day one.</strong> Explainability bolted on later is never as good.</li><li><strong>Let rules override the model where the business demands it</strong> — and make that override</li></ul><p>  visible, not hidden.</p><p>The goal was never "an AI that decides fees." It was a system that makes *consistent,</p><p>explainable* recommendations, where the model earns its place instead of replacing</p><p>judgment.</p></div>
+        <a class="link post__back" href="../../blog.html">← All posts</a>
+      </article>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p>© <span id="year"></span> Hemalatha Yalamanchi. Built with care.</p>
+      <a href="#top" class="link">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <script src="../../js/main.js"></script>
+</body>
+</html>

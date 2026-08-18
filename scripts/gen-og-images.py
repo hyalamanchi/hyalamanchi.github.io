@@ -23,7 +23,7 @@ PROFILE = "/private/tmp/claude-og-profile"
 CAT_HUE = {
     "Roadmap": 280, "Document AI": 232, "Finance & Fintech": 158,
     "Healthcare AI": 330, "Security & MLOps": 205, "Career & Craft": 265,
-    "DevOps & Monitoring": 190,
+    "DevOps & Monitoring": 190, "ML Engineering": 250,
 }
 
 CARD = """<!DOCTYPE html><html><head><meta charset="utf-8">

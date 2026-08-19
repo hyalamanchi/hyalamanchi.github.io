@@ -1,5 +1,15 @@
 [
   {
+    "slug": "python-gets-the-credit-c-does-the-work",
+    "title": "Python Gets the Credit — C and C++ Do the Work",
+    "date": "2026-08-18",
+    "category": "ML Engineering",
+    "tags": ["C++", "C", "Performance", "ML Engineering"],
+    "summary": "Your fast Python ML code isn't really Python — NumPy, PyTorch, and XGBoost are C and C++ underneath. Why that matters, when to drop to the low-level layer, and what C/C++ teaches you even if you write Python all day.",
+    "readMinutes": 5,
+    "cover": ""
+  },
+  {
     "slug": "one-week-no-prd-lead-alert-system",
     "title": "One Week, No PRD — Shipping a Lead-Alert System Under Pressure",
     "date": "2026-08-15",

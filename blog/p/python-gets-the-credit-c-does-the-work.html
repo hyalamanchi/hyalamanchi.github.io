@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Python Gets the Credit — C and C++ Do the Work — Hemalatha Yalamanchi</title>
+  <meta name="description" content="Your fast Python ML code isn&#x27;t really Python — NumPy, PyTorch, and XGBoost are C and C++ underneath. Why that matters, when to drop to the low-level layer, and what C/C++ teaches you even if you write Python all day." />
+  <link rel="canonical" href="https://hyalamanchi.github.io/blog/p/python-gets-the-credit-c-does-the-work.html" />
+
+  <!-- Open Graph (LinkedIn, Facebook, Slack) -->
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Hemalatha Yalamanchi" />
+  <meta property="og:title" content="Python Gets the Credit — C and C++ Do the Work" />
+  <meta property="og:description" content="Your fast Python ML code isn&#x27;t really Python — NumPy, PyTorch, and XGBoost are C and C++ underneath. Why that matters, when to drop to the low-level layer, and what C/C++ teaches you even if you write Python all day." />
+  <meta property="og:url" content="https://hyalamanchi.github.io/blog/p/python-gets-the-credit-c-does-the-work.html" />
+  <meta property="og:image" content="https://hyalamanchi.github.io/assets/og/python-gets-the-credit-c-does-the-work.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="article:published_time" content="2026-08-18" />
+  <meta property="article:author" content="Hemalatha Yalamanchi" />
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Python Gets the Credit — C and C++ Do the Work" />
+  <meta name="twitter:description" content="Your fast Python ML code isn&#x27;t really Python — NumPy, PyTorch, and XGBoost are C and C++ underneath. Why that matters, when to drop to the low-level layer, and what C/C++ teaches you even if you write Python all day." />
+  <meta name="twitter:image" content="https://hyalamanchi.github.io/assets/og/python-gets-the-credit-c-does-the-work.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../css/styles.css" />
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem('theme');
+        if (saved === 'light' || saved === 'dark') document.documentElement.setAttribute('data-theme', saved);
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+  <header class="site-header" id="top">
+    <nav class="nav container">
+      <a href="../../index.html" class="nav__logo">HY<span>.</span></a>
+      <div class="nav__actions">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark theme" title="Toggle theme">
+          <span class="theme-toggle__icon" aria-hidden="true">🌙</span>
+        </button>
+        <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+      <ul class="nav__menu" id="nav-menu">
+        <li><a href="../../index.html#about" class="nav__link">About</a></li>
+        <li><a href="../../index.html#experience" class="nav__link">Experience</a></li>
+        <li><a href="../../index.html#projects" class="nav__link">Projects</a></li>
+        <li><a href="../../index.html#achievements" class="nav__link">Achievements</a></li>
+        <li><a href="../../blog.html" class="nav__link is-active">Blog</a></li>
+        <li><a href="../../index.html#contact" class="nav__link nav__link--cta">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="section container">
+      <article class="post">
+        <a class="link post__back" href="../../blog.html">← All posts</a>
+        <p class="post__meta">August 18, 2026 · 5 min read</p>
+        <h1 class="post__title">Python Gets the Credit — C and C++ Do the Work</h1>
+        <ul class="tag-list tag-list--sm"><li class="tag">C++</li><li class="tag">C</li><li class="tag">Performance</li><li class="tag">ML Engineering</li></ul>
+        <div class="post__body"><p>Here's something easy to forget when you live in notebooks all day: **your fast Python</p><p>ML code isn't really Python.** The moment performance matters, you're running C and C++</p><p>with a Python steering wheel. Understanding that layer has made me a better ML engineer —</p><p>even though I still write Python most days.</p><h2>Your ML stack is C and C++ wearing a Python coat</h2><p>Look at what's actually executing when you call the libraries you use every day:</p><ul><li><strong>NumPy and pandas</strong> — the heavy numerical work is compiled <strong>C</strong> (and Fortran under</li></ul><p>  the linear-algebra hood).</p><ul><li><strong>PyTorch and TensorFlow</strong> — the engines are <strong>C++</strong> with <strong>CUDA</strong> kernels for the GPU.</li><li><strong>XGBoost and LightGBM</strong> — core gradient boosting is <strong>C++</strong>.</li><li><strong>scikit-learn</strong> — hot paths are <strong>Cython</strong>, which compiles down to C.</li></ul><p>When you write <code>model.fit(X, y)</code>, Python is doing almost none of the math. It's</p><p>orchestrating; the compiled kernels are doing the work. Python is the credit; C and C++</p><p>are the labor.</p><h2>Why this matters in practice</h2><p><strong>The GIL and vectorization.</strong> Python's Global Interpreter Lock means a pure-Python loop</p><p>over millions of rows is slow <em>and</em> single-threaded. The reason <code>np.dot()</code> is fast is</p><p>that it hands the whole array to a C routine that never touches the interpreter. "Vectorize</p><p>your code" really means "spend as little time in Python as possible."</p><p><strong>Latency-critical inference.</strong> In production — especially anything touching real users in</p><p>healthcare or finance — the difference between a 200 ms and a 20 ms response can be the</p><p>compiled inference path (C++/ONNX Runtime/TensorRT) versus a Python-heavy one.</p><p><strong>Edge and embedded.</strong> Push a model onto a device and Python often isn't invited. The model</p><p>ships as C++.</p><h2>When you actually reach for C or C++</h2><p>You don't need to write C++ to be a strong ML engineer — but you should know <em>when</em> it's</p><p>the answer:</p><ul><li>A <strong>custom operation</strong> that has no vectorized form and is too slow in Python.</li><li>A <strong>latency budget</strong> the Python path can't meet.</li><li>A <strong>custom CUDA kernel</strong> for a bottleneck on the GPU.</li><li>Writing a <strong>Python extension</strong> (via <code>pybind11</code> or Cython) so the hot 5% runs compiled</li></ul><p>  while the other 95% stays in friendly Python.</p><p>The pattern is almost always: **profile first, vectorize, and only then drop to C/C++ for</p><p>the part that genuinely needs it.**</p><h2>What C and C++ teach you that Python hides</h2><p>Even if you never ship a line of it, the C/C++ mental model pays off:</p><ul><li><strong>Memory is real</strong> — allocations, copies, and layout affect speed. <code>df.copy()</code> isn't free.</li><li><strong>Types are real</strong> — <code>float32</code> vs <code>float64</code> is memory, speed, and sometimes accuracy.</li><li><strong>The cache is real</strong> — why contiguous arrays crush scattered access.</li><li><strong>Determinism is real</strong> — compiled code fails loudly where Python quietly limps along.</li></ul><p>Those instincts are exactly what separate "my model trains" from "my model trains <em>fast</em></p><p>and serves <em>cheaply</em>."</p><h2>The takeaway</h2><p>Python is a wonderful place to think. But the performance you rely on is borrowed from a</p><p>compiled foundation of C and C++. Respect that layer — profile down to it, understand it,</p><p>and learn to drop into it for the 5% that matters — and you stop being someone who <em>uses</em></p><p>ML libraries and start being someone who understands <em>why they're fast</em>.</p><blockquote>Python gets the credit. C and C++ do the work. The best ML engineers know both.</blockquote></div>
+        <a class="link post__back" href="../../blog.html">← All posts</a>
+      </article>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p>© <span id="year"></span> Hemalatha Yalamanchi. Built with care.</p>
+      <a href="#top" class="link">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <script src="../../js/main.js"></script>
+</body>
+</html>

@@ -1,5 +1,15 @@
 [
   {
+    "slug": "why-i-built-a-voice-bot-with-claude",
+    "title": "Why I Built a Voice Bot With Claude (and Not GPT-4)",
+    "date": "2026-08-19",
+    "category": "ML Engineering",
+    "tags": ["Claude", "LLMs", "Voice", "Python"],
+    "summary": "I built an open-source voice bot where you speak and it speaks back. The interesting decision wasn't the speech stack — it was the brain. Why Claude's instruction-following made it the right fit for a 'speak, don't format' constraint.",
+    "readMinutes": 5,
+    "cover": ""
+  },
+  {
     "slug": "python-gets-the-credit-c-does-the-work",
     "title": "Python Gets the Credit — C and C++ Do the Work",
     "date": "2026-08-18",

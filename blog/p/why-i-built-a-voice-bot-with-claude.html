@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Why I Built a Voice Bot With Claude (and Not GPT-4) — Hemalatha Yalamanchi</title>
+  <meta name="description" content="I built an open-source voice bot where you speak and it speaks back. The interesting decision wasn&#x27;t the speech stack — it was the brain. Why Claude&#x27;s instruction-following made it the right fit for a &#x27;speak, don&#x27;t format&#x27; constraint." />
+  <link rel="canonical" href="https://hyalamanchi.github.io/blog/p/why-i-built-a-voice-bot-with-claude.html" />
+
+  <!-- Open Graph (LinkedIn, Facebook, Slack) -->
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Hemalatha Yalamanchi" />
+  <meta property="og:title" content="Why I Built a Voice Bot With Claude (and Not GPT-4)" />
+  <meta property="og:description" content="I built an open-source voice bot where you speak and it speaks back. The interesting decision wasn&#x27;t the speech stack — it was the brain. Why Claude&#x27;s instruction-following made it the right fit for a &#x27;speak, don&#x27;t format&#x27; constraint." />
+  <meta property="og:url" content="https://hyalamanchi.github.io/blog/p/why-i-built-a-voice-bot-with-claude.html" />
+  <meta property="og:image" content="https://hyalamanchi.github.io/assets/og/why-i-built-a-voice-bot-with-claude.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="article:published_time" content="2026-08-19" />
+  <meta property="article:author" content="Hemalatha Yalamanchi" />
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Why I Built a Voice Bot With Claude (and Not GPT-4)" />
+  <meta name="twitter:description" content="I built an open-source voice bot where you speak and it speaks back. The interesting decision wasn&#x27;t the speech stack — it was the brain. Why Claude&#x27;s instruction-following made it the right fit for a &#x27;speak, don&#x27;t format&#x27; constraint." />
+  <meta name="twitter:image" content="https://hyalamanchi.github.io/assets/og/why-i-built-a-voice-bot-with-claude.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../css/styles.css" />
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem('theme');
+        if (saved === 'light' || saved === 'dark') document.documentElement.setAttribute('data-theme', saved);
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+  <header class="site-header" id="top">
+    <nav class="nav container">
+      <a href="../../index.html" class="nav__logo">HY<span>.</span></a>
+      <div class="nav__actions">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark theme" title="Toggle theme">
+          <span class="theme-toggle__icon" aria-hidden="true">🌙</span>
+        </button>
+        <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+      <ul class="nav__menu" id="nav-menu">
+        <li><a href="../../index.html#about" class="nav__link">About</a></li>
+        <li><a href="../../index.html#experience" class="nav__link">Experience</a></li>
+        <li><a href="../../index.html#projects" class="nav__link">Projects</a></li>
+        <li><a href="../../index.html#achievements" class="nav__link">Achievements</a></li>
+        <li><a href="../../blog.html" class="nav__link is-active">Blog</a></li>
+        <li><a href="../../index.html#contact" class="nav__link nav__link--cta">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="section container">
+      <article class="post">
+        <a class="link post__back" href="../../blog.html">← All posts</a>
+        <p class="post__meta">August 19, 2026 · 5 min read</p>
+        <h1 class="post__title">Why I Built a Voice Bot With Claude (and Not GPT-4)</h1>
+        <ul class="tag-list tag-list--sm"><li class="tag">Claude</li><li class="tag">LLMs</li><li class="tag">Voice</li><li class="tag">Python</li></ul>
+        <div class="post__body"><p>I built a small <a href="https://github.com/hyalamanchi/claude-voice-bot" target="_blank" rel="noopener">voice bot</a> over a</p><p>weekend — you speak to it, it speaks back. The fun part wasn't the speech stack. It was</p><p>choosing the <em>brain</em>. I went with <strong>Claude</strong>, and the reason is more specific than "I</p><p>like it."</p><p>The code is open source: <strong><a href="https://github.com/hyalamanchi/claude-voice-bot" target="_blank" rel="noopener">github.com/hyalamanchi/claude-voice-bot</a></strong>.</p><h2>A voice bot has one brutal constraint</h2><p>On a screen, an LLM can lean on formatting — bold text, bullet points, code blocks,</p><p>emoji. In a voice interface, all of that is <em>poison</em>. A text-to-speech engine doesn't</p><p>render <code><strong>important</strong></code>; it literally says "asterisk asterisk important asterisk</p><p>asterisk." Bullet points become a stream of "dash… dash… dash." A code block is</p><p>unlistenable.</p><p>So the entire job of the model, beyond being correct, is to <strong>speak like a person</strong>:</p><p>short sentences, no markup, natural phrasing. My whole system prompt is basically *"you</p><p>are being read out loud — talk, don't format."*</p><p>That single constraint is what drove the decision.</p><h2>Why Claude won this one</h2><p>I'm not here to dunk on GPT-4 — it's a strong model and it could absolutely power a voice</p><p>bot. But for <em>this</em> project, building it myself, Claude fit better on three axes:</p><p><strong>1. It follows the "don't format" instruction tightly.</strong> This is the whole game for</p><p>voice. When I told Claude to avoid markdown, lists, and symbols, it stayed in spoken prose</p><p>turn after turn. That reliability is the difference between a bot that sounds human and</p><p>one that periodically reads punctuation aloud.</p><p><strong>2. The tone sounds right out loud.</strong> Claude's default register is warm and conversational</p><p>without being syrupy. Read through a text-to-speech voice, that lands as <em>natural</em> — which</p><p>is exactly what you want the moment someone is talking to a machine instead of typing.</p><p><strong>3. The developer experience got out of my way.</strong> The Python SDK is clean and well-typed,</p><p>so the entire "brain" is about forty lines: keep the transcript, send it, return the text.</p><p>Less time on plumbing, more on the experience.</p><h2>Being honest about the comparison</h2><p>A few caveats, because I'd rather be trusted than impressive:</p><ul><li>This is <strong>my experience on one project</strong>, not a benchmark. Your use case and prompts</li></ul><p>  will shape your own answer.</p><ul><li><strong>Both models are capable.</strong> If you've already got a GPT-4 pipeline, you don't need to</li></ul><p>  rip it out to build a voice bot.</p><ul><li>Model quality moves fast. The <em>right</em> habit isn't loyalty to a brand — it's testing the</li></ul><p>  candidates on your actual task, which is exactly what I did here.</p><p>What I'll say is this: for a task defined by *following a subtle formatting instruction,</p><p>every single turn*, Claude's instruction-following made it the natural pick. And the</p><p>weekend was more fun than it had any right to be.</p><h2>What's next</h2><p>The repo is intentionally small and hackable. The ideas I want to try next:</p><ul><li>Swapping cloud speech-to-text for <strong>local Whisper</strong>, so it works offline and private.</li><li><strong>Streaming</strong> replies so speech starts before the full answer is ready.</li><li><strong>Tool use</strong> — let the bot actually check the weather or a calendar instead of guessing.</li></ul><p>If you want to poke at it or fork it, it's here:</p><p><strong><a href="https://github.com/hyalamanchi/claude-voice-bot" target="_blank" rel="noopener">github.com/hyalamanchi/claude-voice-bot</a></strong>.</p><p>Clone it, add a key, and talk to it.</p><blockquote>The best model isn't the one with the biggest headline. It's the one that fits the</blockquote><blockquote>constraint your product actually has. For a voice bot, that constraint was "speak, don't</blockquote><blockquote>format" — and Claude nailed it.</blockquote></div>
+        <a class="link post__back" href="../../blog.html">← All posts</a>
+      </article>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p>© <span id="year"></span> Hemalatha Yalamanchi. Built with care.</p>
+      <a href="#top" class="link">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <script src="../../js/main.js"></script>
+</body>
+</html>
